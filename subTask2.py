@@ -6,17 +6,15 @@ while True:
         break
     else:
         print("Invalid age. Please enter a number.")
-ticket_type = input("Please Enter your ticket type (VIP or Regular): ")
+ticket_type = input("Please Enter your ticket type (VIP or Regular): ").strip().lower()
 
-ticket_type = ticket_type.strip().lower()
-
-if ticket_type == "vip" or ticket_type == "regular":
-    attendee = {
-        "name": name,
-        "age": age,
-        "ticket_type": ticket_type.upper()
-    }
-
-    print("Attendee Registered")
+if age < 18:
+    zone = "Youth Zone"
+elif ticket_type == "vip":
+    zone = "VIP Zone"
+elif age >= 18 and ticket_type == "regular":
+    zone = "Standard Zone"
 else:
-    print("Invalid ticket type. Please enter VIP or Regular.")
+    zone = "unknown Zone"
+
+print("You have been placed in the", zone)
